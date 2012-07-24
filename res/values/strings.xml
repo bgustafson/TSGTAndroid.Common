@@ -8,5 +8,6 @@
     <string name="titleSampleNote">Click Here To Enter Note</string>
     <string name="titleSave">Save</string>
     <string name="titleSaveDialog">Create Feature</string>
+    <string name="LegendDesc">Legend</string>
     
 </resources>
