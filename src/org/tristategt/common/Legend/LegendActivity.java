@@ -22,12 +22,7 @@ import android.widget.TextView;
 public class LegendActivity extends Activity {
 	ListView listView;
 	String uri;
-	/*
-	 Intent intent = new Intent(getBaseContext(), LegendActivity.class);
-	 intent.putExtra("uri", webUri);
-	 startActivity(intent)
-	 */
-	
+
 	//Set the source to the image from the rest end point
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -49,17 +44,17 @@ public class LegendActivity extends Activity {
 				Bitmap bitmap = legend.getImage();
 				
 				TextView textView = new TextView(this);
+				textView.setLayoutParams(params);
 				SpannableString content = new SpannableString(label);
 			    content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
 				textView.setText(content);
 				textView.setTextSize(10);
-				textView.setTextColor(Color.WHITE);
-				textView.setLayoutParams(params);
+				textView.setTextColor(Color.WHITE);			
 				listView.addView(textView);
 				
 				ImageView imageView = new ImageView(this);
-				imageView.setImageBitmap(bitmap);
 				imageView.setLayoutParams(params);
+				imageView.setImageBitmap(bitmap);
 				listView.addView(imageView);
 			}		
 		}
