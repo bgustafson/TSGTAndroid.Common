@@ -1,10 +1,10 @@
 package org.tristategt.common.Legend;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.tristategt.common.R;
 
-import com.esri.android.map.ags.ArcGISDynamicMapServiceLayer;
 import com.esri.android.map.ags.ArcGISLayerInfo;
 import com.esri.core.map.Legend;
 
@@ -16,6 +16,7 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,20 +29,22 @@ public class LegendActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.legend);
-		savedInstanceState.getString("uri");
 		listView = (ListView)findViewById(R.id.legendItems);
 		LayoutParams params = new LayoutParams(
 	            LayoutParams.MATCH_PARENT,
 	            LayoutParams.WRAP_CONTENT);
 		
-		ArcGISLayerInfo[] layerInfos = new ArcGISDynamicMapServiceLayer(savedInstanceState.getString("uri")).getLayers();
-		
+		Bundle extras = getIntent().getExtras();
+		ArrayList<ArcGISLayerInfo> layerInfos = (ArrayList<ArcGISLayerInfo>) extras.getSerializable("uri");	
+
 		for(ArcGISLayerInfo layerInfo : layerInfos){
 			List<Legend> legends = layerInfo.getLegend();
 			
 			for(Legend legend : legends){
 				String label = legend.getLabel();
 				Bitmap bitmap = legend.getImage();
+				
+				LinearLayout linearLayout = new LinearLayout(this);
 				
 				TextView textView = new TextView(this);
 				textView.setLayoutParams(params);
@@ -50,12 +53,14 @@ public class LegendActivity extends Activity {
 				textView.setText(content);
 				textView.setTextSize(10);
 				textView.setTextColor(Color.WHITE);			
-				listView.addView(textView);
+				linearLayout.addView(textView);
 				
 				ImageView imageView = new ImageView(this);
 				imageView.setLayoutParams(params);
 				imageView.setImageBitmap(bitmap);
-				listView.addView(imageView);
+				linearLayout.addView(imageView);
+				
+				listView.addView(linearLayout);
 			}		
 		}
 	}
