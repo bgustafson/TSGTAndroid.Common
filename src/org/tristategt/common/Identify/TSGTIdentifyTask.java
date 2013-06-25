@@ -80,8 +80,8 @@ public class TSGTIdentifyTask extends AsyncTask<IdentifyParameters, Void, Identi
 							
 		ArrayList<IdentifyResult> resultList = new ArrayList<IdentifyResult>();
 		for (int index=0; index < results.length; index++){
-				
-			if(results[index].getAttributes().get(results[index].getDisplayFieldName())!=null)
+							
+			if(results[index].getValue() != null)	
 				resultList.add(results[index]);
 		}
 			

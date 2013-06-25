@@ -3,6 +3,7 @@
     <string name="app_name">TSGTAndroid.Common</string>
     
     <string name="pinDesc">Push Pin</string>
+    <string name="folderDesc">Folder</string>
 	<string name="legal">GIS data and maps available to Tri-State Generation and Transmission Association Intranet users are provided as general information to aid them in performing their job functions.  No user of Tri-State\'s GIS data and maps may sell any portion of the information provided therein.  Tri-State makes no warranty regarding accuracy or completeness of the data and maps.  Users shall rely only upon proper field verification of Tri-State GIS data.</string>
   	<string name="titleNote">Note:</string>
     <string name="titleSampleNote">Click Here To Enter Note</string>
@@ -10,4 +11,6 @@
     <string name="titleSaveDialog">Create Feature</string>
     <string name="LegendDesc">Legend</string>
     
+    <!-- Colors -->
+    <color name="white">#FFFFFF</color>
 </resources>

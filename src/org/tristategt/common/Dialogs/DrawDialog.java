@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class DrawDialog extends DialogFragment {
 	
-	final String[] geometryTypes = new String[] { "Point", "Polyline", "Polygon", "Clear" };
+	final String[] geometryTypes = new String[] { "Point", "Polyline", "Polygon", "Freehand Line", "Clear" };
 	int selectedGeometryIndex = -1;
 	
 	DrawTouchListener myListener;
@@ -88,6 +88,10 @@ public class DrawDialog extends DialogFragment {
 						mMapView.setOnTouchListener(myListener);
 						myListener.setType("POINT");
 						toast.setText("Tap on screen to draw a point.");
+					} else if (geomType.equalsIgnoreCase("Freehand Line")) {
+						mMapView.setOnTouchListener(myListener);
+						myListener.setType("Freehand Line");
+						toast.setText("Drag finger on screen to draw a line.");
 					} else if (geomType.equalsIgnoreCase("Clear")) {
 						graphicsLayer.removeAll();
 						mMapView.setOnTouchListener(new GenericMapTouchListener(mMapView.getContext(), mMapView));
